@@ -1,0 +1,42 @@
+{
+  "name": "echoscribe",
+  "version": "0.1.0",
+  "description": "Transcrição de vídeos desktop com Python e Electron",
+  "main": "src/main/main.js",
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"npm run electron\" \"npm run backend\"",
+    "electron": "electron .",
+    "backend": "cd backend && python main.py",
+    "build": "electron-builder",
+    "dist": "electron-builder --publish=never"
+  },
+  "dependencies": {
+    "electron-is-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "electron": "^latest",
+    "electron-builder": "^latest",
+    "concurrently": "^latest"
+  },
+  "build": {
+    "appId": "com.echoscribe.app",
+    "productName": "EchoScribe",
+    "directories": {
+      "buildResources": "assets"
+    },
+    "files": [
+      "src/**/*",
+      "backend/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    }
+  }
+}
